@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Spring MVC - Exemplo</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <main>
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <h1>Cadastrar Produto</h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <form class="form" th:action="@{/produto/salvar}" th:object="${produto}" method="post">
+                            <input type="hidden" th:if="${produto.id != null}" th:field="*{id}" />
+                            <div class="form-group">
+                                <label>Nome</label>
+                                <input type="text" class="form-control" name="nomeproduto" th:field="*{nome}" />
+                                <p th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></p>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Descrição</label>
+                                <input type="text" class="form-control" name="descricaoproduto" th:field="*{descricao}"  />
+                                <p th:if="${#fields.hasErrors('descricao')}" th:errors="*{descricao}"></p>
+                            </div>
+                            <div class="form-group">
+                                <label>Preço Compra</label>
+                                <input type="number" class="form-control" name="precoCompra" th:field="*{precoCompra}" />
+                                <p th:if="${#fields.hasErrors('precoCompra')}" th:errors="*{precoCompra}"></p>
+                            </div>
+                            <div class="form-group">
+                                <label>Preço Venda</label>
+                                <input type="number" class="form-control" name="precoVenda" th:field="*{precoVenda}" />
+                                <p th:if="${#fields.hasErrors('precoVenda')}" th:errors="*{precoVenda}"></p>
+                            </div>
+                            <div class="form-group">
+                            <label>Quantidade</label>
+                                <input type="number" class="form-control" name="quantidade" th:field="*{quantidade}" />
+                                <p th:if="${#fields.hasErrors('quantidade')}" th:errors="*{quantidade}"></p>
+                            </div>
+                            <div class="form-group">
+                                <fieldset>
+                                    <legend>Disponível</legend>
+                                    <div class="form-check form-check-inline">
+                                        <input type="radio" class="form-check-input" name="disponivel" id="disposim" value="1" th:field="*{disponivel}" checked />
+                                        <label class="form-check-label" for="disposim">Sim</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input type="radio" class="form-check-input" name="disponivel" id="disponao" value="0" th:field="*{disponivel}" />
+                                        <label class="form-check-label" for="disponao">Não</label>
+                                    </div>
+                                    <p th:if="${#fields.hasErrors('disponivel')}" th:errors="*{disponivel}"></p>
+                                </fieldset>
+                            </div>
+                            <!--
+                            <div class="form-group">
+                                <fieldset>
+                                    <legend>Categorias</legend>
+                                    <div class="form-check form-check-inline">
+                                        <input type="checkbox" class="form-check-input" name="categorias" id="chk1" value="0" th:field="*{interesses}" checked />
+                                        <label class="form-check-label" for="chk1">Cat 1</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input type="checkbox" class="form-check-input" name="categorias" id="chk1" value="0" th:field="*{interesses}" checked />
+                                        <label class="form-check-label" for="chk1">Cat 2</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input type="checkbox" class="form-check-input" name="categorias" id="chk1" value="0" th:field="*{interesses}" checked />
+                                        <label class="form-check-label" for="chk1">Cat 3</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input type="checkbox" class="form-check-input" name="categorias" id="chk1" value="0" th:field="*{interesses}" checked />
+                                        <label class="form-check-label" for="chk1">Cat 4</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input type="checkbox" class="form-check-input" name="categorias" id="chk1" value="0" th:field="*{interesses}" checked />
+                                        <label class="form-check-label" for="chk1">Cat 5</label>
+                                    </div>
+                                    <p th:if="${#fields.hasErrors('interesses')}" th:errors="*{interesses}"></p>
+                                </fieldset>
+                            </div> -->
+
+                            <button class="btn btn-success btn-block">Salvar</button>
+
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h3>Cadastro Produto</h3>
+        <div th:if="${msg != null}">
+            <p style="color: yellow; background-color: blue" th:text="${msg}"></p>
+        </div>
+        <div>
+            <form th:action="@{/mvc/pessoa/salvar2}" method="post"
+                  th:object="${pessoa}">
+                <div>
+                    <label>Nome</label>
+                    <input type="text" th:field="*{nome}" />
+                </div>
+                <div>
+                    <label>Descrição</label>
+                    <input type="text" th:field="*{descricao}"/>
+                </div>
+                <div>
+                    <label>Preço Compra</label>
+                    <input type="number" th:field="*{precoCompra}" />
+                </div>
+                <div>
+                    <label>Preço Venda</label>
+                    <input type="number" th:field="*{precoVenda}" />
+                </div>
+                <div>
+                    <label>Quantidade</label>
+                    <input type="number" th:field="*{quantidade}" />
+                </div>
+                <div>
+                    <label>Disponivel</label>
+                    <input type="number" th:field="*{disponivel}" />
+                </div
+                <div>
+                    <label>Data Cadastro</label>
+                    <input type="date" th:field="*{dtCadastro}" />
+                </div>
+                <fieldset>
+                    <legend>Categorias</legend>
+                    <input type="checkbox" value="1" th:field="*{interesses}" />
+                    <label>Cat 1</label>
+                    <input type="checkbox" value="2" th:field="*{interesses}" />
+                    <label>Cat 2</label>
+                    <input type="checkbox" value="3" th:field="*{interesses}" />
+                    <label>Cat 3</label>
+                    <input type="checkbox" value="4" th:field="*{interesses}" />
+                    <label>Cat 4</label>
+                    <input type="checkbox" value="5" th:field="*{interesses}" />
+                    <label>Cat 5</label>
+                </fieldset>
+                <button type="submit">Enviar</button>
+            </form>
+
+        </div>
+    </body>
+</html>
